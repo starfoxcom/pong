@@ -28,7 +28,7 @@ public class ball : MonoBehaviour {
             if(Input.GetButton("leftButton_p1") && Input.GetButton("rightButton_p1"))
             {
                 drop = rb.velocity;
-                drop.z = 5;
+                drop.z = 8;
                 drop.y = 4;
                 rb.velocity = drop;
                 Debug.Log("drop");
@@ -37,7 +37,7 @@ public class ball : MonoBehaviour {
             {
                 topspin = rb.velocity;
                 topspin.z = speed * 1.5f;
-                topspin.y = 4;
+                topspin.y = 4.5f;
                 rb.velocity = topspin;
                 Debug.Log("topspin");
             }
@@ -45,7 +45,7 @@ public class ball : MonoBehaviour {
             {
                 glove = rb.velocity;
 
-                glove.y = 4 * 1.5f;
+                glove.y = 4 * 2f;
                 glove.z = 8;
                 rb.velocity = glove;
                 Debug.Log("glove");
@@ -63,7 +63,7 @@ public class ball : MonoBehaviour {
             if (Input.GetButton("leftButton_p2") && Input.GetButton("rightButton_p2"))
             {
                 drop = rb.velocity;
-                drop.z = -5;
+                drop.z = -8;
                 drop.y = 4;
                 rb.velocity = drop;
                 Debug.Log("drop");
@@ -72,7 +72,7 @@ public class ball : MonoBehaviour {
             {
                 topspin = rb.velocity;
                 topspin.z = -speed * 1.5f;
-                topspin.y = 4;
+                topspin.y = 4.5f;
                 rb.velocity = topspin;
                 Debug.Log(topspin);
             }
@@ -80,7 +80,7 @@ public class ball : MonoBehaviour {
             {
                 glove = rb.velocity;
 
-                glove.y = 4 * 1.5f;
+                glove.y = 4 * 2f;
                 glove.z = -8;
                 rb.velocity = glove;
                 Debug.Log("glove");

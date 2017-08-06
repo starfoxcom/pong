@@ -27,12 +27,12 @@ public class player1 : MonoBehaviour {
             rb.transform.rotation = Quaternion.Euler(0, 34.9f, 0);
         else if (angle < -.30f)
             rb.transform.rotation = Quaternion.Euler(0, -34.9f, 0);
-        if (position.x < -7)
-            rb.transform.position = new Vector3(-6.9f, rb.transform.position.y, rb.transform.position.z);
-        else if(position.x > 7)
-            rb.transform.position = new Vector3(6.9f, rb.transform.position.y, rb.transform.position.z);
-        if (position.z < -9)
-            rb.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y, -8.9f);
+        if (position.x < -8)
+            rb.transform.position = new Vector3(-7.9f, rb.transform.position.y, rb.transform.position.z);
+        else if(position.x > 8)
+            rb.transform.position = new Vector3(7.9f, rb.transform.position.y, rb.transform.position.z);
+        if (position.z < -12)
+            rb.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y, -11.9f);
         else if (position.z > -2)
             rb.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y, -2.1f);
 
