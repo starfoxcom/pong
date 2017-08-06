@@ -25,7 +25,7 @@ public class ball : MonoBehaviour {
         if(collision.gameObject.name == "p1")
         {
             var p1 = collision.gameObject;
-            if (Input.GetKey(KeyCode.T))
+            if (Input.GetKey(KeyCode.T) || Input.GetButton("leftButton_p1"))
             {
                 topspin = rb.velocity;
                 topspin.z *= 1.5f;
@@ -42,7 +42,7 @@ public class ball : MonoBehaviour {
         if (collision.gameObject.name == "p2")
         {
             var p2 = collision.gameObject;
-            if (Input.GetKey(KeyCode.Comma))
+            if (Input.GetKey(KeyCode.Comma) || Input.GetButton("leftButton_p2"))
             {
                 topspin = rb.velocity;
                 topspin.z *= 1.5f;

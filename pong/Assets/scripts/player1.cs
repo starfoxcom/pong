@@ -48,6 +48,9 @@ public class player1 : MonoBehaviour {
             mov = new Vector3(0, 0, 0);
         }
 
+        rb.transform.position += new Vector3(Input.GetAxis("left_joy_Hp1"), 0, 0) * speed * Time.deltaTime;
+        rb.transform.Rotate(new Vector3(0, Input.GetAxis("right_joy_Hp1"), 0) * speed * 10 * Time.deltaTime);
+
         if (Input.GetKey(KeyCode.E))
         {
             rb.transform.Rotate(-Vector3.up * speed * 10 * Time.deltaTime);
