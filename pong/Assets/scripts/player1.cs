@@ -48,7 +48,7 @@ public class player1 : MonoBehaviour {
             mov = new Vector3(0, 0, 0);
         }
 
-        rb.transform.position += new Vector3(Input.GetAxis("left_joy_Hp1"), 0, 0) * speed * Time.deltaTime;
+        rb.transform.position += new Vector3(Input.GetAxis("left_joy_Hp1"), 0, Input.GetAxis("left_joy_Vp1")) * speed * Time.deltaTime;
         rb.transform.Rotate(new Vector3(0, Input.GetAxis("right_joy_Hp1"), 0) * speed * 10 * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.E))
@@ -69,6 +69,10 @@ public class player1 : MonoBehaviour {
             rb.transform.position = new Vector3(-6.9f, rb.transform.position.y, rb.transform.position.z);
         else if(position.x > 7)
             rb.transform.position = new Vector3(6.9f, rb.transform.position.y, rb.transform.position.z);
-        
+        if (position.z < -9)
+            rb.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y, -8.9f);
+        else if (position.z > -2)
+            rb.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y, -2.1f);
+
     }
 }
