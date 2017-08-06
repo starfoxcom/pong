@@ -7,7 +7,7 @@ public class ball : MonoBehaviour {
 
     public float speed;
     private Rigidbody rb;
-    private Vector3 diry, diri, pos, topspin;
+    private Vector3 diry, diri, pos, topspin, glove;
 
     // Use this for initialization
 	void Start () {
@@ -22,37 +22,58 @@ public class ball : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "p1")
+        if (collision.gameObject.name == "p1")
         {
             var p1 = collision.gameObject;
-            if (Input.GetKey(KeyCode.T) || Input.GetButton("leftButton_p1"))
+            if (Input.GetButton("leftButton_p1"))
             {
                 topspin = rb.velocity;
-                topspin.z *= 1.5f;
+                topspin.z = speed * 1.5f;
                 topspin.y = 4;
-                if (topspin.z > 14.5f)
-                    topspin.z = 14.5f;
                 rb.velocity = topspin;
+                Debug.Log(topspin);
+            }
+            else if (Input.GetButton("rightButton_p1"))
+            {
+                glove = rb.velocity;
+
+                glove.y = 4 * 1.5f;
+                glove.z = 8;
+                rb.velocity = glove;
+                Debug.Log("glove");
             }
             else
+            {
                 rb.velocity = ((p1.GetComponent<Rigidbody>().transform.forward + diry) * speed);
-            //Debug.Log(rb.velocity);
-            //Debug.Log(topspin);
+                Debug.Log("normal");
+            }
+
         }
         if (collision.gameObject.name == "p2")
         {
             var p2 = collision.gameObject;
-            if (Input.GetKey(KeyCode.Comma) || Input.GetButton("leftButton_p2"))
+            if (Input.GetButton("leftButton_p2"))
             {
                 topspin = rb.velocity;
-                topspin.z *= 1.5f;
+                topspin.z = -speed * 1.5f;
                 topspin.y = 4;
-                if (topspin.z < -14.5f)
-                    topspin.z = -14.5f;
                 rb.velocity = topspin;
+                Debug.Log(topspin);
+            }
+            else if (Input.GetButton("rightButton_p2"))
+            {
+                glove = rb.velocity;
+
+                glove.y = 4 * 1.5f;
+                glove.z = -8;
+                rb.velocity = glove;
+                Debug.Log("glove");
             }
             else
+            {
                 rb.velocity = -((-p2.GetComponent<Rigidbody>().transform.forward - diry) * speed);
+                Debug.Log("normal");
+            }
             //Debug.Log(rb.velocity);
             //Debug.Log(topspin);
         }
