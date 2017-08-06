@@ -7,7 +7,7 @@ public class ball : MonoBehaviour {
 
     public float speed;
     private Rigidbody rb;
-    private Vector3 diry, diri, pos, topspin, glove;
+    private Vector3 diry, diri, pos, topspin, glove, drop;
 
     // Use this for initialization
 	void Start () {
@@ -25,13 +25,21 @@ public class ball : MonoBehaviour {
         if (collision.gameObject.name == "p1")
         {
             var p1 = collision.gameObject;
-            if (Input.GetButton("leftButton_p1"))
+            if(Input.GetButton("leftButton_p1") && Input.GetButton("rightButton_p1"))
+            {
+                drop = rb.velocity;
+                drop.z = 5;
+                drop.y = 4;
+                rb.velocity = drop;
+                Debug.Log("drop");
+            }
+            else if (Input.GetButton("leftButton_p1"))
             {
                 topspin = rb.velocity;
                 topspin.z = speed * 1.5f;
                 topspin.y = 4;
                 rb.velocity = topspin;
-                Debug.Log(topspin);
+                Debug.Log("topspin");
             }
             else if (Input.GetButton("rightButton_p1"))
             {
@@ -52,7 +60,15 @@ public class ball : MonoBehaviour {
         if (collision.gameObject.name == "p2")
         {
             var p2 = collision.gameObject;
-            if (Input.GetButton("leftButton_p2"))
+            if (Input.GetButton("leftButton_p2") && Input.GetButton("rightButton_p2"))
+            {
+                drop = rb.velocity;
+                drop.z = -5;
+                drop.y = 4;
+                rb.velocity = drop;
+                Debug.Log("drop");
+            }
+            else if(Input.GetButton("leftButton_p2"))
             {
                 topspin = rb.velocity;
                 topspin.z = -speed * 1.5f;
